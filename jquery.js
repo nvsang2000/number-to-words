@@ -1,11 +1,10 @@
 
-(function ($) {
 
- $.spellingNumber = function (number, options) {
+function spellingNumber (number, options) {
 		
 		number = parseFloat(number.toString().replace(/,/g, ''));
 
-		if (!$.isNumeric(number)) {
+		if (!isNumeric(number)) {
 			throwError('Value given is not numeric.');
 			return;
 		}
@@ -360,5 +359,3 @@
 
 	}
 
-
-})(jQuery);

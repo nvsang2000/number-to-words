@@ -44,7 +44,7 @@ const LIST_CODE_LANGUE = {
       7: "triệu",
       10: "tỷ",
     },
-    odd: "lẻ",
+    odd: "linh",
   },
   en: {
     base: {
@@ -91,68 +91,87 @@ function coverNumberToWords(code, type, number) {
   number = parseInt(number, 10) + "";
   const length = number.length;
   const language = LIST_CODE_LANGUE[code];
-  const specielNumber = language.base?.[number];
+  const base = language.base;
+  const units = language.units;
+  const odd = language.odd;
 
-  if (length === 1) return [specielNumber];
-  if (length === 2) {
-    if (specielNumber) return specielNumber?.split(" ");
-    else {
-      const [numA, numB] = number?.split("");
-      const numberToWord = `${language.base[numA * 10]} ${language.base[numB]}`;
-      return numberToWord.split(" ");
+  if (length <= 2) {
+    const specielNum = base?.[number];
+    if (length === 1) return [specielNum];
+    if (length === 2) {
+      if (specielNum) return specielNum?.split(" ");
+      else {
+        const [numA, numB] = number?.split("");
+        const numberToWord = `${base[numA * 10]} ${base[numB]}`;
+        return numberToWord.split(" ");
+      }
     }
-  }
-  if (length > 2) {
+  } else {
     if (type === 1) {
-      const arrayNumber = number.split("");
-      return arrayNumber.map((num) => language.base[num]);
+      const nums = number.split("");
+      return nums.map((num) => base[num]);
     }
     if (type === 2) {
       if (length === 3) {
-        const words = handleHasLangthOfThree(number, language);
+        let words = "";
+        const [numA, numB, numC] = number.split("");
+
+        if (numB === "0") words = `${base[numA]} ${units[3]} ${odd} ${base[numC]}`;
+        else if (numB === "0" && numC == "0") words = `${base[numA]} ${units[3]}`;
+        else  {
+          const specielNum = numB + numC
+          if(base[specielNum]) words = `${base[numA]} ${units[3]} ${base[specielNum]}`;
+          else words = `${base[numA]} ${units[3]} ${base[numB * 100]} ${base[numC]}`;
+        }
         return words.split(" ");
       } else {
-        const arrayChunk = chunksNumber(number);
-        let arrayWords = [];
-        for (let i = 0; i < arrayChunk.length; i++) {
-          if (arrayChunk[i].length === 3) {
-            const words = handleHasLangthOfThree(arrayChunk[i], language);
-          }
-          if (arrayChunk[i].length === 2) {
-            const [numA, numB] = number?.split("");
-            const numberToWord = `${language.base[numA * 10]} ${
-              language.base[numB]
-            }`;
-          }
-          if (arrayChunk[i].length === 1) {
-            const number = language.base?.[number];
-          }
+        const chunk = chunksNumber(number);
+        let numberToWord = "";
 
-          console.log("index", words);
+        for (let i = 0; i < chunk.length; i++) {
+          const num = chunk[i];
+          if (num.length === 1 && i === 0) {
+            const position = (chunk.length - 1) * 3 + 1;
+            numberToWord = `${base[num[0]]} ${units[position]}`;
+          }
+          if (num.length === 2 && i === 0) {
+            const position = (chunk.length - 1) * 3 + 1;
+            const specielNum = base?.[num];
+            if (specielNum) numberToWord = `${specielNum} ${units[position]}`;
+            else {
+              const [numA, numB] = num?.split("");
+              numberToWord = `${base[numA * 10]} ${base[numB]} ${
+                units[position]
+              }`;
+            }
+          }
+          if (num.length === 3) {
+            let words = "";
+            const position = (chunk.length - i - 1) * 3 + 1;
+            const [numA, numB, numC] = num?.split("");
+
+            if (numA === "0" && numB === "0" && numC == "0") continue;
+            else if (numB === "0") words = `${base[numA]} ${units[3]} ${odd} ${base[numC]}`;
+            else if (numB === "0" && numC == "0") words = `${base[numA]} ${units[3]}`;
+            else if (numB !== "0" && numC !== "0") words = `${base[numA]} ${units[3]} ${base[numB * 10]} ${base[numC]}`;
+            else  {
+              const specielNum = numB + numC
+              if(base[specielNum]) {
+                console.log('nums', base[specielNum])
+                words = `${base[numA]} ${units[3]} ${base[specielNum]}`;
+              } else {
+                console.log('num', num)
+              numberToWord = `${numberToWord} ${words} ${units[position]}`;
+              }
+              
+            }
+          }
         }
-        console.log("array", arrayChunk, length);
+        console.log("chunk", chunk, numberToWord);
+        return numberToWord.split(" ")
       }
     }
   }
-}
-
-function handleHasLangthOfThree(number, language) {
-  let words;
-  const unit = language.units[3];
-  const oddNumber = language.odd;
-
-  const [numA, numB, numC] = number.split("");
-  if (numB === "0")
-    words = `${language.base[numA]} ${unit} ${oddNumber} ${language.base[numC]}`;
-
-  if (numB === "0" && numC == "0") words = `${language.base[numA]} ${unit}`;
-
-  if (numB !== "0" && numC !== "0")
-    words = `${language.base[numA]} ${unit} ${language.base[numB * 10]} ${
-      language.base[numC]
-    }`;
-
-  return words;
 }
 
 function chunksNumber(number) {
@@ -169,5 +188,6 @@ function chunksNumber(number) {
   return chunks;
 }
 
-const result = coverNumberToWords("vi", 2, "60900");
+const result = coverNumberToWords("en", 2, "1130");
+console.log("_____________________________");
 console.log("result", result);
