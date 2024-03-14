@@ -42,7 +42,7 @@ const LIST_CODE_LANGUE = {
     units: {
       2: "mươi",
       3: "trăm",
-      4: "ngàn",
+      4: "nghìn",
       7: "triệu",
       10: "tỷ",
     },
@@ -93,9 +93,9 @@ const LIST_CODE_LANGUE = {
 //ngôn ngữ đọc số 0
 const READ_NUMBER_ZERO = ['vi']
 
-//code: string, mã có trong LIST_CODE_LANGUE
-//type: number, dạng đọc. 1 đọc tách số khi có 3 chữ số trở lên, 2 đọc số bình thường.
-//number: string. Số cần đọc 
+//code: string;_____________Mã có trong LIST_CODE_LANGUE
+//type: number;_____________Dạng đọc. "1" đọc tách số khi có 3 chữ số trở lên, "2" đọc số bình thường.
+//number: string | number;__Số cần đọc.
 function coverNumberToWords(code, type, number) {
   number = parseInt(number, 10) + "";
   const length = number.length;
@@ -112,7 +112,7 @@ function coverNumberToWords(code, type, number) {
       if (specielNum) return specielNum.split(" ");
       else {
         const [numA, numB] = number?.split("");
-        const numberToWord = `${base[numA * 10]} ${base[numB]}`;
+        const numberToWord = `${base[+numA * 10]} ${base[numB]}`;
         return numberToWord.split(" ");
       }
     }
@@ -133,11 +133,12 @@ function coverNumberToWords(code, type, number) {
         if (numB === "0" && numC == "0") words = `${numHundred}`;//số hàng trăm
         else if (numB === "0" && numC !== "0") words = `${numHundred} ${odd} ${base[numC]}`;//số lẻ
         else if (base[specielNum]) words = `${numHundred} ${base[specielNum]}`;//số hàng chục đặc biệt
-        else words = `${numHundred} ${base[numB * 10]} ${base[numC]}`;//số còn lại
+        else words = `${numHundred} ${base[+numB * 10]} ${base[numC]}`;//số còn lại
         
+        console.log('words', words)
         return words.trim().split(" ");
       } else {
-        let numberToWord;
+        let numberToWord = '';
         const chunk = chunksNumber(number);
 
         for (let i = 0; i < chunk.length; i++) {
@@ -152,17 +153,17 @@ function coverNumberToWords(code, type, number) {
             if (specielNum) numberToWord = `${specielNum} ${units[position]}`;
             else {
               const [numA, numB] = num?.split("");
-              numberToWord = `${base[numA * 10]} ${base[numB]} ${units[position]}`;
+              numberToWord = `${base[+numA * 10]} ${base[numB]} ${units[position]}`;
             }
           }
           if (num.length === 3) {
-            let words;
-            let numHundred;
+            let words = '';
+            let numHundred = '';
             const [numA, numB, numC] = num.split("");
             const position = (chunk.length - i - 1) * 3 + 1;
             const specielNum = numB + numC;
             const unit = units[position] ? units[position] : '';
-            
+
             if (numA === "0" && numB === "0" && numC == "0") continue;//số không đọc
             if (numA === "0") readNumberZero ? numHundred = `${base[numA]} ${units[3]}` : numHundred = '';
             else numHundred = `${base[numA]} ${units[3]}`;//kiểm tra đọc số 0 và đọc số hàng trăm.
@@ -170,17 +171,17 @@ function coverNumberToWords(code, type, number) {
             if (numB === "0" && numC == "0") words = `${numHundred}`;//số hàng trăm
             else if (numB === "0" && numC !== "0")  words = `${numHundred} ${odd} ${base[numC]}`;//số lẻ         
             else if (base[specielNum])  words = `${numHundred} ${base[specielNum]}`;//số hàng chục đặc biệt
-            else  words = `${numHundred} ${base[numB * 10]} ${base[numC]}`;//số còn lại
+            else  words = `${numHundred} ${base[+numB * 10]} ${base[numC]}`;//số còn lại
             numberToWord = `${numberToWord} ${words} ${unit}`;
           }
         }
+        console.log('numberToWord', numberToWord)
         const result = numberToWord.split(" ").filter((i) => i !== '')
         return result
       }
     }
   }
 }
-
 //Tách chuỗi số thành một mảng. Bắt đầu tách ngược từ vị trí cuối cùng đến vị trí đầu tiên của chuỗi
 //Vidu 1230. thì sẽ bắt đầu đọc từ 0,3,2 thành một chuỗi và 1 thành một chuỗi. Sau đó đảo chuỗi
 //Output: ["1", "230"]
@@ -198,8 +199,9 @@ function chunksNumber(number) {
   return chunks;
 }
 
+//console.log("chunksNumber", chunksNumber('1232543'));
 console.log("_____________________________");
-console.log("result", coverNumberToWords("vi", 2, '810'));
+console.log("result", coverNumberToWords("en", 2, '96'));
 // console.log("result", coverNumberToWords("vi", 1, '81'));
 // console.log("result", coverNumberToWords("vi", 2, '109'));
 // console.log("result", coverNumberToWords("vi", 1, '109'));

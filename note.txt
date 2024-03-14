@@ -22,11 +22,11 @@ Yêu cầu:
 mã ngôn ngữ : language
 
 ko : korean : hàn
-de : deutsch : đức
+de : deutsch : đức (*)
 en : english : anh
-fr : francais : pháp
-it : italiano : ý
-es : spanish : tây ban nha
+fr : francais : pháp (*)
+it : italiano : ý  (*)
+es : spanish : tây ban nha (*)
 vi : vietnamese : việt nam
 ru : pyccknn : nga
 ja : japanese : nhật
