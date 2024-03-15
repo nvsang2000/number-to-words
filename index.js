@@ -107,9 +107,15 @@ const LIST_CODE_LANGUE = {
       80: "八十",
       90: "九十",
       99: "九十九",
+      110: "一百一十",
       200: "两百",
+      1000: "一千",
+      2000: "二千",
+      1100: "一千一百",
+      10000: "一万"
     },
     units: {
+      2: "十",//chục
       3: "百",//1 trăm
       4: "千",//1 ngàn
       5: "万",//1 vạn = 10 ngàn
@@ -261,11 +267,16 @@ function coverNumberToWords(code, type, number) {
             else numberToWord = `${base[num[0]]} ${units[position]}`;
           }
           if (num.length === 2 && i === 0) {
+            const [numA, numB] = num.split("");
             const position = (chunk.length - 1) * 3 + 1;
-            const specielNum = base?.[num];
-            if (specielNum) numberToWord = `${specielNum} ${units[position]}`;
+            const specielNumA = base[+numA * 10 ** position];
+            const specielNumB = base[+numB * 10 ** (position - 1)];
+            console.log("specielNum", specielNumA, specielNumB)
+            if (specielNumA && specielNumB) numberToWord = `${specielNumA} ${specielNumB}`; 
+            // else if (specielNumA) numberToWord = `${specielNumA} ${base[numB]}  ${units[position]}`;
+            // else if (specielNumB) numberToWord = `${base[numA]} ${specielNumB} ${units[position]}`;
             else {
-              const [numA, numB] = num?.split("");
+              console.log("numberToWord", numberToWord)
               numberToWord = `${base[+numA * 10]} ${base[numB]} ${units[position]}`;
             }
           }
@@ -282,7 +293,6 @@ function coverNumberToWords(code, type, number) {
             const unit = units[position] ? units[position] : '';//đơn vị
             const specielNum = numB + numC;//số hàng chục đặc biệt.
 
-            console.log('specielNum', specielNum, base[specielNum])
             if (checkA) readNumberZero ? numHundred = `${base[numA]} ${units[3]}` : numHundred = '';
             else {
               const specielNumA = base?.[+numA * 10 ** (position + 1)]//số hàng trăm đặc biệt.
@@ -290,9 +300,6 @@ function coverNumberToWords(code, type, number) {
               else  numHundred = `${base[numA]} ${units[3]}`;
             }
 
-            if(checkA && checkB && !checkC) {
-              
-            }
             //kiểm tra đọc các số hàng chục và đơn vị.
             if (checkB && checkC) words = `${numHundred}`;//số hàng trăm
             else if (checkB && !checkC) words = `${numHundred} ${odd} ${base[numC]}`;//số lẻ        
@@ -327,7 +334,9 @@ function chunksNumber(number) {
 //console.log("chunksNumber", chunksNumber('1232543'));
 console.log("_____________________________");
 //console.log("result", coverNumberToWords("zh", 2, '241'));
-console.log("result", coverNumberToWords("zh", 2, '1000001'));
+console.log("result", coverNumberToWords("zh", 2, '120'));
+//console.log("result", coverNumberToWords("zh", 2, '12000'));
+
 // console.log("result", coverNumberToWords("zh", 2, '109'));
 // console.log("result", coverNumberToWords("zh", 2, '109'));
 // console.log("result", coverNumberToWords("vi", 1, '81'));
