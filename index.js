@@ -1,21 +1,21 @@
-'use strict';
-const CODE_LANGUE = require('./langue');
+"use strict";
+const CODE_LANGUE = require("./langue");
 const READ_0 = ["vi", "ko"];
 const READ_LENGTH_4 = ["zh", "ko", "ja"];
 /**
  * Converts an integer into a string with an ordinal postfix.
  * If number is decimal, the decimals will be removed.
  * @example numberToWords("en", 2, "123") => [ 'one', 'hundred', 'twenty', 'three' ]
- * @param {string} code
- * Language code
- * @param {number} type
- * Reading format. "1" reads split numbers, "2" reads normal numbers.
- * @param {number|string} number
- * Number to read
+   @param {Object} options
+ * @param {number|string} options.number Number to read
+ * @param {string} [options.code] Language code
+ * @param {number} [options.type] Reading format. "1" reads split numbers, "2" reads normal numbers.
+ 
  * @returns {[string]}
  */
-function numberToWords(code, type, number) {
-  number = parseInt(number, 10) + "";
+function numberToWords({ number, code = "en", type = 2 }) {
+  number = type === 2 ? parseInt(number, 10) : number;
+  number = number + "";
   const length = number.length;
   const { base, separator, filter } = CODE_LANGUE[code];
 
@@ -23,11 +23,15 @@ function numberToWords(code, type, number) {
   if (length <= 2) {
     let words = "";
     const speciel = base[number];
-    if (length === 1) return [speciel];
+    if (length === 1) return words = [speciel];
     if (length === 2) {
       words = handleForLength_2(number, base);
-      return words.split(separator).filter((i) => i !== filter);
+      words = words.split(separator).filter((i) => i !== filter);
     }
+    return {
+      base: words,
+      words: words.join(separator)
+    };
   } else {
     //Handle numbers. > 99
     let words = "";
@@ -38,12 +42,17 @@ function numberToWords(code, type, number) {
       //Handle numbers in the hundreds place (100 - 999)
       else {
         //Handle numbers above thousands 99 billion <= number >= 1000
-        if (READ_LENGTH_4.includes(code)) //Read 4 numbers.
-          words = handleFor_4(code, number); 
+        if (READ_LENGTH_4.includes(code))
+          //Read 4 numbers.
+          words = handleFor_4(code, number);
         else words = handleFor_3(code, number); //Read 2 numbers.
       }
     }
-    return words.split(separator).filter((i) => i !== filter);
+    const result = words.split(separator).filter((i) => i !== filter)
+    return {
+      base: result,
+      words: result.join(separator)
+    };
   }
 }
 //Handle a string of numbers with length 2.
@@ -66,7 +75,7 @@ function handleForLength_3(code, number) {
   const checkB = numB === "0";
   const checkC = numC === "0";
 
-  const speciel = numB + numC; 
+  const speciel = numB + numC;
   if (checkA) {
     if (read_0) hundred = `${base[numA]} ${units[3]}`;
     else hundred = "";
@@ -209,8 +218,15 @@ function chunksNumber(number, limit) {
   return chunks;
 }
 
-module.exports = { 
-  numberToWords,
-  chunksNumber
+function languages() {
+  return Object.keys(CODE_LANGUE).map((code) => ({
+    code,
+    name: CODE_LANGUE[code].name,
+  }));
 }
 
+module.exports = {
+  numberToWords,
+  chunksNumber,
+  languages,
+};

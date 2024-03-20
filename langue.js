@@ -1,6 +1,6 @@
 const CODE_LANGUE = {
   vi: {
-    name: "Vietnamses",
+    name: "Vietnamese",
     separator: " ",
     filter: "",
     odd: "linh",
