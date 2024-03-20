@@ -594,7 +594,7 @@ const READ_LENGTH_4 = ["zh", "ko", "ja"];
 //code: string;_____________Mã có trong CODE_LANGUE
 //type: number;_____________Dạng đọc. "1" đọc tách số khi có 3 chữ số trở lên, "2" đọc số bình thường.
 //number: string | number;__Số cần đọc.
-function coverNumberToWords(code, type, number) {
+function numberToWords(code, type, number) {
   number = parseInt(number, 10) + "";
   const length = number.length;
   const { base, separator, filter } = CODE_LANGUE[code];
@@ -784,5 +784,5 @@ function chunksNumber(number, limit) {
   return chunks;
 }
 
-exports.coverNumberToWords = coverNumberToWords
+exports.numberToWords = numberToWords
 
