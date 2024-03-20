@@ -6,14 +6,6 @@ Convert numbers to words for popular languages for countries in Asia and Europe 
 ```$xslt
 npm i nums-to-words
 ```
-
-## Use 
-### Command for dev
-Install global
-
-```reactjs
-npm i -g nums-to-words
-```
 Example Result
 ```$xslt
 "vi" : [ 'một', 'trăm', 'hai', 'mươi' ]
