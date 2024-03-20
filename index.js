@@ -1,7 +1,5 @@
 'use strict';
-const fs = require('fs');
-const readFile = fs.readFileSync('./langue.json');
-const CODE_LANGUE = JSON.parse(readFile);
+const CODE_LANGUE = require('./langue');
 const READ_0 = ["vi", "ko"];
 const READ_LENGTH_4 = ["zh", "ko", "ja"];
 /**

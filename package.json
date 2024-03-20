@@ -1,6 +1,6 @@
 {
-  "name": "nums-to-words",
-  "version": "1.0.2",
+  "name": "numbers-to-words",
+  "version": "1.0.0",
   "description": "Converts numbers into words & currency.",
   "keywords": [
     "vietnamese number to words",
@@ -20,17 +20,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nvsang2000/nums-to-words"
+    "url": "https://github.com/nvsang2000/numbers-to-words"
   },
-  "homepage": "https://github.com/nvsang2000/nums-to-words",
+  "homepage": "https://github.com/nvsang2000/numbers-to-words",
   "main": "index.js",
   "scripts": {
     "start": "index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yuene",
-  "license": "ISC",
-  "dependencies": {
-    "fs": "^0.0.1-security"
-  }
+  "license": "ISC"
 }
