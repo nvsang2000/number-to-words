@@ -1,6 +1,6 @@
 const CODE_LANGUE = {
-  //Vietnamses "Việt"
   vi: {
+    name: "Vietnamses",
     separator: " ",
     filter: "",
     odd: "linh",
@@ -43,7 +43,6 @@ const CODE_LANGUE = {
       100: "một trăm",
     },
     units: {
-      //Đơn vị
       2: "mươi",
       3: "trăm",
       4: "nghìn",
@@ -51,8 +50,8 @@ const CODE_LANGUE = {
       10: "tỷ",
     },
   },
-  //English "Anh"
   en: {
+    name: "English",
     separator: " ",
     filter: "",
     odd: "and",
@@ -94,8 +93,8 @@ const CODE_LANGUE = {
       10: "billion",
     },
   },
-  //China "Trung"
   zh: {
+    name: "China",
     separator: "",
     filter: " ",
     odd: "零",
@@ -124,33 +123,33 @@ const CODE_LANGUE = {
       200: "两百",
       1000: "一千",
       2000: "两千",
-      10000: "一万", //1 vạn = 10 nghìn
+      10000: "一万",
       20000: "两万",
-      100000: "十万", //10 vạn
+      100000: "十万",
       200000: "两十万",
-      1000000: "一百万", //100 vạn
+      1000000: "一百万",
       2000000: "两百万",
-      10000000: "一千万", //1000 vạn
+      10000000: "一千万",
       20000000: "两千万",
-      100000000: "一亿", //10000 vạn
+      100000000: "一亿",
       2000000000: "两亿",
-      10000000000: "十亿", //1 tỉ
+      10000000000: "十亿",
       200000000000: "两十亿",
     },
     units: {
-      2: "十", //chục
-      3: "百", //1 trăm
-      4: "千", //1 ngàn
-      5: "万", //1 vạn = 10 ngàn
-      6: "十万", //10 vạn = 100 nghìn
-      7: "百万", //1 triệu = 100 vạn
-      8: "千万", //10 triệu = 1000 vạn
-      9: "亿", //100 triệu
-      10: "十亿", //1 tỉ
+      2: "十",
+      3: "百",
+      4: "千",
+      5: "万",
+      6: "十万",
+      7: "百万",
+      8: "千万",
+      9: "亿",
+      10: "十亿",
     },
   },
-  //Japanese, kanji "Nhật"
   ja: {
+    name: "Japanese",
     separator: "",
     filter: " ",
     odd: "",
@@ -176,28 +175,28 @@ const CODE_LANGUE = {
       90: "九十",
       99: "九十九",
       100: "百",
-      1000: "千", //1 nghìn
-      10000: "一万", //1 vạn = 10 nghìn
-      100000: "十万", //10 vạn
-      1000000: "百万", //100 vạn
-      10000000: "千万", //1000 vạn
-      100000000: "一億", //10000 vạn
-      10000000000: "十億", //1 tỉ
+      1000: "千",
+      10000: "一万",
+      100000: "十万",
+      1000000: "百万",
+      10000000: "千万",
+      100000000: "一億",
+      10000000000: "十億",
     },
     units: {
-      2: "十", //10
-      3: "百", //1 trăm
-      4: "千", //1 nghìn
-      5: "万", //1 man = 10 nghìn
-      6: "十万", //10 man
-      7: "百万", //100 man
-      8: "千万", //1000 man
-      9: "億", //10000 man
-      10: "十億", //1 tỉ
+      2: "十",
+      3: "百",
+      4: "千",
+      5: "万",
+      6: "十万",
+      7: "百万",
+      8: "千万",
+      9: "億",
+      10: "十億",
     },
   },
-  //Korean "Hàn"
   ko: {
+    name: "Korean",
     separator: "",
     filter: " ",
     odd: "",
@@ -222,29 +221,29 @@ const CODE_LANGUE = {
       70: "칠십",
       80: "팔십",
       90: "구십",
-      100: "백", //1 trăm
-      1000: "천", //1 nghìn
-      10000: "만", //10 nghìn
-      100000: "십만", //100 nghìn
-      1000000: "백만", //1 triệu
-      10000000: "천만", //10 triệu
-      100000000: "억", //100 triệu
-      1000000000: "십억", //1 tỉ
+      100: "백",
+      1000: "천",
+      10000: "만",
+      100000: "십만",
+      1000000: "백만",
+      10000000: "천만",
+      100000000: "억",
+      1000000000: "십억",
     },
     units: {
-      2: "일", //10
-      3: "백", //1 trăm
-      4: "천", //1 nghìn
-      5: "만", //1 vạn
-      6: "십만", //10 vạn
-      7: "백만", //100 vạn
-      8: "천만", //1000 vạn
-      9: "억", //10000 vạn
-      10: "십억", //1 tỉ
+      2: "일",
+      3: "백",
+      4: "천",
+      5: "만",
+      6: "십만",
+      7: "백만",
+      8: "천만",
+      9: "억",
+      10: "십억",
     },
   },
-  //Francais "Pháp"
   fr: {
+    name: "Francais",
     separator: " ",
     filter: "",
     odd: "",
@@ -310,28 +309,28 @@ const CODE_LANGUE = {
       98: "quatre vingt dix huit",
       99: "quatre vingt dix neuf",
       100: "cent",
-      1000: "mille", //1 nghìn
-      10000: "dix mille", //10 nghìn
-      100000: "cent mille", //100 nghìn
-      1000000: "un million", //1 triệu
-      10000000: "dix millions", //10 triệu
-      100000000: "cent millions", //100 triệu
-      1000000000: "un milliard", //1 tỉ
+      1000: "mille",
+      10000: "dix mille",
+      100000: "cent mille",
+      1000000: "un million",
+      10000000: "dix millions",
+      100000000: "cent millions",
+      1000000000: "un milliard",
     },
     units: {
       2: "dix",
-      3: "cent", //1 trăm
-      4: "mille", //1 nghìn
-      5: "dix mille", //10 nghìn
-      6: "cent mille", //100 nghìn
-      7: "million", //1 triệu
-      8: "dix million", //10 triệu
-      9: "cent million", //100 triệu
-      10: "milliard", //1 tỉ
+      3: "cent",
+      4: "mille",
+      5: "dix mille",
+      6: "cent mille",
+      7: "million",
+      8: "dix million",
+      9: "cent million",
+      10: "milliard",
     },
   },
-  //Italiano "Ý"
   it: {
+    name: "Italiano",
     separator: " ",
     filter: "",
     odd: "",
@@ -404,14 +403,14 @@ const CODE_LANGUE = {
       1000000: "un milioni",
     },
     units: {
-      3: "cento", //1 trăm
-      4: "mille", //1 nghìn
-      7: "milioni", //1 triệu
-      10: "miliardo", //1 tỉ
+      3: "cento",
+      4: "mille",
+      7: "milioni",
+      10: "miliardo",
     },
   },
-  //Spanish "Tây ban nha"
   es: {
+    name: "Spanish",
     separator: " ",
     filter: "",
     odd: "",
@@ -465,14 +464,14 @@ const CODE_LANGUE = {
       1000: "mil",
     },
     units: {
-      3: "cien", //1 trăm
-      4: "mil", //1 nghìn
-      7: "millón", //1 triệu
-      10: "billón", //1 tỉ
+      3: "cien",
+      4: "mil",
+      7: "millón",
+      10: "billón",
     },
   },
-  //Pyccknn "Nga"
   ru: {
+    name: "Pyccknn",
     separator: " ",
     filter: "",
     odd: "",
@@ -516,13 +515,13 @@ const CODE_LANGUE = {
       900: "девятьсот",
     },
     units: {
-      4: "тысяча", //1 nghìn
-      7: "миллион", //1 triệu
-      10: "миллиард", //1 tỉ
+      4: "тысяча",
+      7: "миллион",
+      10: "миллиард",
     },
   },
-  //Deutsch "Đức"
   de: {
+    name: "Deutsch",
     separator: " ",
     filter: "",
     odd: "",
@@ -580,9 +579,9 @@ const CODE_LANGUE = {
     },
     units: {
       3: "hundert", //trăm
-      4: "eintausend", //1 nghìn
-      7: "million", //1 triệu
-      10: "milliarde", //1 tỉ
+      4: "eintausend",
+      7: "million",
+      10: "milliarde",
     },
   },
 };

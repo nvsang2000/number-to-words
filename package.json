@@ -1,10 +1,11 @@
 {
-  "name": "numbers-to-words",
+  "name": "words-countries",
   "version": "1.0.1",
   "description": "Converts numbers into words & currency.",
   "keywords": [
     "vietnamese number to words",
     "vietnamese to words",
+    "dictionaries of many countries",
     "number to words",
     "to words",
     "number to words",
@@ -16,13 +17,14 @@
     "converter",
     "number",
     "word",
-    "currency"
+    "currency",
+    "countries"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nvsang2000/numbers-to-words"
+    "url": "https://github.com/nvsang2000/words-countries"
   },
-  "homepage": "https://github.com/nvsang2000/numbers-to-words",
+  "homepage": "https://github.com/nvsang2000/words-countries",
   "main": "index.js",
   "scripts": {
     "start": "index.js",

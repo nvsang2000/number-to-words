@@ -1,11 +1,11 @@
-[![NPM](https://nodei.co/npm/nums-to-words.png)](https://www.npmjs.com/package/nums-to-words)
+[![NPM](https://nodei.co/npm/words-countries.png)](https://www.npmjs.com/package/words-countries)
 
-# nums-to-words
+# words-countries
 Convert numbers to words for popular languages for countries in Asia and Europe. 
 Language support: Vietnamese, English, Chinese, Korean, Japanese, French, German, Italian, Spanish, Russian.
 ## Install
 ```$xslt
-npm i nums-to-words
+npm i words-countries
 ```
 Example Result
 ```$xslt
@@ -18,7 +18,7 @@ Example Result
 ### Use
 
 ```js
-const { numberToWords } = require('nums-to-words')
+const { numberToWords } = require('words-countries')
 const result = numberToWords("vi", 2, "120")
 console.log('result:', result)
 ```
