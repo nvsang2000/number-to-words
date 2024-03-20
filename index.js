@@ -619,8 +619,8 @@ function coverNumberToWords(code, type, number) {
       else {
         //Xử lí các số trên hàng nghìn 99 tỉ <= number >= 1000
         if (READ_LENGTH_4.includes(code))
-          words = handleFor_4(code, number); //Đọc 4 số. China, Korean, Japanese
-        else words = handleFor_3(code, number); //Đọc 3 số. Vietnamese, English
+          words = handleFor_4(code, number); //Đọc 4 số.
+        else words = handleFor_3(code, number); //Đọc 3 số.
       }
     }
     return words.split(separator).filter((i) => i !== filter);
@@ -668,7 +668,7 @@ function handleForLength_3(code, number) {
   return words;
 }
 
-//Hàm xử lí 3 số. Đối với các quốc gia đọc bằng cách tách 3 số như Việt Nam.
+//Hàm xử lí 3 số.
 function handleFor_3(code, number) {
   let result = "";
   const { base, units } = CODE_LANGUE[code];
@@ -698,7 +698,7 @@ function handleFor_3(code, number) {
   }
   return result;
 }
-//Hàm xử lí 4 số. Đối với các quốc gia đọc bằng cách tách 4 số như Nhật, Trung, Hàn.
+//Hàm xử lí 4 số.
 function handleFor_4(code, number) {
   let result = "";
   const { base, units, odd } = CODE_LANGUE[code];
@@ -786,14 +786,13 @@ function chunksNumber(number, limit) {
 
 //End code;
 console.log("______________End_Code______________");
-//console.log("result", coverNumberToWords("zh", 2, '241'));
-console.log("result", coverNumberToWords("de", 2, "2010"));
-
-// for(i = 1; i <= 100 ; i++) {
-//   console.log('result:',
-//   i,
-//   coverNumberToWords("vi", 2, i + ''),
-//   coverNumberToWords("en", 2, i + ''),
-//   coverNumberToWords("zh", 2, i + ''),
-//   coverNumberToWords("ko", 2, i + ''))
-// }
+console.log("result: vi", coverNumberToWords("vi", 2, "2109"));
+console.log("result: en", coverNumberToWords("en", 2, "2109"));
+console.log("result: zh", coverNumberToWords("zh", 2, "2109"));
+console.log("result: ja", coverNumberToWords("ja", 2, "2109"));
+console.log("result: ko", coverNumberToWords("ko", 2, "2109"));
+console.log("result: fr", coverNumberToWords("fr", 2, "2109"));
+console.log("result: it", coverNumberToWords("it", 2, "2109"));
+console.log("result: es", coverNumberToWords("es", 2, "2109"));
+console.log("result: ru", coverNumberToWords("ru", 2, "2109"));
+console.log("result: de", coverNumberToWords("de", 2, "2109"));
