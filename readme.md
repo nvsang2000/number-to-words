@@ -1,7 +1,8 @@
 [![NPM](https://nodei.co/npm/nums-to-words.png)](https://www.npmjs.com/package/nums-to-words)
 
-# vn-to-words
-Convert numbers to words for popular languages for countries in Asia and Europe including Vietnamese, English, Chinese, Korean, Japanese, French, German, Italian, Spanish, Russian
+# nums-to-words
+Convert numbers to words for popular languages for countries in Asia and Europe. 
+Language support: Vietnamese, English, Chinese, Korean, Japanese, French, German, Italian, Spanish, Russian.
 ## Install
 ```$xslt
 npm i nums-to-words
