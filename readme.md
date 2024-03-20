@@ -1,8 +1,8 @@
-# AOE RANDOM
-The random countries for team in Age Of Empires game
+# vn-to-words
+Convert numbers to words for popular languages for countries in Asia and Europe including Vietnamese, English, Chinese, Korean, Japanese, French, German, Italian, Spanish, Russian
 ## Install
 ```$xslt
-npm i aoerandom
+npm i vn-to-words
 ```
 
 ## Use 
@@ -10,11 +10,11 @@ npm i aoerandom
 Install global
 
 ```angular2
-npm i -g aoerandom
+npm i -g vn-to-words
 ```
 Run command with parameter to random from 1 to 8
 ```$xslt
-aoerandom <number>
+vn-to-words <number>
 ```
 Example Result
 ```$xslt
@@ -30,7 +30,7 @@ Example Result
 ### Develop with interface
 Require package
 ```$xslt
-const aoe = require('aoerandom')
+const aoe = require('vn-to-words')
 ```
 Get a country random
 ```$xslt
@@ -50,7 +50,7 @@ aoe.getTeamRandomUnique(8)
 ### Use for VUE
 Create Vue component example with command
 ```$xslt
-aoerandomdev vue
+vn-to-wordsdev vue
 ```
 AoeComponent.vue was created. Which is content
 ```$xslt
@@ -83,10 +83,10 @@ AoeComponent.vue was created. Which is content
 </template>
 
 <script>
-    import {getTeamRandom} from 'aoerandom';
+    import {getTeamRandom} from 'vn-to-words';
 
     export default {
-        name: "AoeRandom",
+        name: "vn-to-words",
         data() {
             return {
                 teamSize: 8,
@@ -108,5 +108,5 @@ AoeComponent.vue was created. Which is content
 ### Use for React native
 Create React native component example with command
 ```$xslt
-aoerandomdev reactNative
+vn-to-wordsdev reactNative
 ```
