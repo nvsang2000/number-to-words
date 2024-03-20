@@ -1,6 +1,6 @@
 {
   "name": "vn-to-words",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Converts numbers into words & currency.",
   "keywords": [
     "vietnamese number to words",
