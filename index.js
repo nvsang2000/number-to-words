@@ -784,15 +784,5 @@ function chunksNumber(number, limit) {
   return chunks;
 }
 
-//End code;
-console.log("______________End_Code______________");
-console.log("result: vi", coverNumberToWords("vi", 2, "2109"));
-console.log("result: en", coverNumberToWords("en", 2, "2109"));
-console.log("result: zh", coverNumberToWords("zh", 2, "2109"));
-console.log("result: ja", coverNumberToWords("ja", 2, "2109"));
-console.log("result: ko", coverNumberToWords("ko", 2, "2109"));
-console.log("result: fr", coverNumberToWords("fr", 2, "2109"));
-console.log("result: it", coverNumberToWords("it", 2, "2109"));
-console.log("result: es", coverNumberToWords("es", 2, "2109"));
-console.log("result: ru", coverNumberToWords("ru", 2, "2109"));
-console.log("result: de", coverNumberToWords("de", 2, "2109"));
+exports.coverNumberToWords = coverNumberToWords
+

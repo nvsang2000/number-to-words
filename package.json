@@ -1,13 +1,29 @@
 {
-  "name": "fc-cover-number-to-text",
+  "name": "vn-to-words",
   "version": "1.0.0",
-  "description": "",
+  "description": "Converts numbers into words & currency.",
+  "keywords": [
+    "vietnamese number to words",
+    "vietnamese to words",
+    "number to words",
+    "to words",
+    "number to words",
+    "number to words currency",
+    "international number to words",
+    "international number to words currency",
+    "convert-numbers",
+    "i18n",
+    "converter",
+    "number",
+    "word",
+    "currency"
+  ],
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "yuene",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.0"
