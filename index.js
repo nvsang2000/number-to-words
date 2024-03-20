@@ -6,12 +6,12 @@ const READ_LENGTH_4 = ["zh", "ko", "ja"];
  * Converts an integer into a string with an ordinal postfix.
  * If number is decimal, the decimals will be removed.
  * @example numberToWords("en", 2, "123") => [ 'one', 'hundred', 'twenty', 'three' ]
- * Language code
  * @param {string} code
- * Reading format. "1" reads split numbers, "2" reads normal numbers.
+ * Language code
  * @param {number} type
- * Number to read
+ * Reading format. "1" reads split numbers, "2" reads normal numbers.
  * @param {number|string} number
+ * Number to read
  * @returns {[string]}
  */
 function numberToWords(code, type, number) {
