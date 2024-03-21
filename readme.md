@@ -14,15 +14,17 @@ Example Result
 "zh" : [ '一', '百', '二', '十' ]
 "ko" : [ '백', '이', '십' ]
 "ja" : [ '百', '二', '十' ]
+
+{ base: [ 'one', 'hundred', 'twenty' ], words: 'one hundred twenty' }
 ```
 ### Use
 
 ```js
 const { numberToWords } = require('words-countries')
-const result = numberToWords("vi", 2, "120")
+const result = numberToWords({ number: "120" })
 console.log('result:', result)
 ```
-### Type numberToWords(code, type, number)
+### Type numberToWords({code, type, number})
 ```$xslt
 Code : string
 {
