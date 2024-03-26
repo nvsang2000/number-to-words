@@ -37,7 +37,7 @@ function numberToWords({ number, code = "en", type = 2 }) {
     let words = "";
     if (type === 1) return number.split("").map((num) => base[num]);
     if (type === 2) {
-      if (length > 10) return; //Above 7 numbers cannot be read with type = 2
+      if (length > 12) throw new Error('Cannot handle numbers with length greater than 12!');
       if (length === 3) words = handleForLength_3(code, number);
       //Handle numbers in the hundreds place (100 - 999)
       else {
