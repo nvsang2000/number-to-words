@@ -605,28 +605,21 @@ function numberToWords({ number, code, type }) {
   const length = number.length;
   const { base, separator, filter } = CODE_LANGUE[code];
 
-  if (type === 1) return number.split("").map((num) => base[num])
-  if (type === 2) {
-    //Handle numbers 1-99
-    if (length <= 2) {
-      let words = [];
-      const speciel = base[number];
-      if (length === 1) return words = [speciel];
-      if (length === 2) {
-        if (type === 1) {
-          const [numA, numB] = number.split("");
-          const nums = [base[numA], base[numB]]
-          words.push(...nums)
-        }
-        if (type === 2) {
-          words = handleForLength_2(number, base);
-          words = words.split(separator).filter((i) => i !== filter);
-        }
-      }
-      return words
-    } else {
-      //Handle numbers. > 99
-      let words = "";
+  //Handle numbers 1-99
+  if (length <= 2) {
+    let words = [];
+    const speciel = base[number];
+    if (length === 1) return words = [speciel];
+    if (length === 2) {
+      words = handleForLength_2(number, base);
+      words = words.split(separator).filter((i) => i !== filter);
+    }
+    return words
+  } else {
+    //Handle numbers. > 99
+    let words = "";
+    if (type === 1) return number.split("").map((num) => base[num]);
+    if (type === 2) {
       if (length > 12) throw new Error('Cannot handle numbers with length greater than 12!');
       if (length === 3) words = handleForLength_3(code, number);
       //Handle numbers in the hundreds place (100 - 999)
@@ -637,10 +630,10 @@ function numberToWords({ number, code, type }) {
           words = handleFor_4(code, number);
         else words = handleFor_3(code, number); //Read 2 numbers.
       }
-      const result = words.split(separator).filter((i) => i !== filter)
-      return result
     }
-  } 
+    const result = words.split(separator).filter((i) => i !== filter)
+    return result
+  }
 }
 //Handle a string of numbers with length 2.
 function handleForLength_2(number, base) {
@@ -811,6 +804,10 @@ function languages() {
     name: CODE_LANGUE[code].name,
   }));
 }
+
+// console.log("numberToWords", numberToWords({ code: "vi", number: 99, type: 2 }))
+// console.log("numberToWords", numberToWords({ code: "vi", number: 35, type: 1 }))
+// console.log("numberToWords", numberToWords({ code: "vi", number: 5008, type: 2 }))
 
 module.exports = {
   numberToWords,
